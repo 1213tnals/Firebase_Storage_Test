@@ -48,7 +48,7 @@ public class FirebaseStorageManager : MonoBehaviour
     {
         // 파일 다운로드
         StorageReference textRef = _storageRef.Child(remoteFilePath);
-        byte[] textBytes = await textRef.GetBytesAsync(10000);
+        byte[] textBytes = await textRef.GetBytesAsync(5000000000);
 
         // 로컬에 파일 저장
         File.WriteAllBytes(localFilePath, textBytes);
@@ -59,9 +59,9 @@ public class FirebaseStorageManager : MonoBehaviour
     // 다운로드 버튼 클릭 이벤트에 연결된 메소드
     public void Download()
     {
-        string remoteFilePath = "test.txt"; // Firebase Storage에 있는 파일 경로
+        string remoteFilePath = "point_cloud.ply"; // Firebase Storage에 있는 파일 경로
         //string localFilePath = Application.persistentDataPath + "/test_down.txt"; // 로컬에 저장할 파일 경로
-        string localFilePath = "./test_down.txt"; // 로컬에 저장할 파일 경로
+        string localFilePath = "./Assets/Database/point_cloud.ply"; // 로컬에 저장할 파일 경로
 
         Debug.Log(localFilePath);
         DownloadTextFile(remoteFilePath, localFilePath);
